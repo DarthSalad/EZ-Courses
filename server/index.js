@@ -14,7 +14,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const corsOptions = {credentials:true, origin: "*", methods: ["GET", "POST", "DELETE", "PUT", "PATCH"]};
+const corsOptions = {credentials:true, origin: "http://localhost:3000", methods: ["GET", "POST", "DELETE", "PUT", "PATCH"]};
 
 app.use(cors(corsOptions));
 app.use(json());

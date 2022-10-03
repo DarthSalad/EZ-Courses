@@ -39,10 +39,16 @@ router.put('/add_course', authenticateToken, async (req, res) => {
             , [req.body.course_id]
         );
         if(course.rows.length !== 0) return res.status(403).json({error: "Already subscribed to the course."});
+        
         await pool.query(
             'UPDATE users SET courses = ARRAY_APPEND(courses, $1) WHERE user_id = $2'
             , [req.body.course_id, req.body.user_id]
         );
+        await pool.query(
+            'UPDATE courses SET enrolled_members=enrolled_members+1 WHERE course_id = $1'
+            , [req.body.course_id]
+        );
+
         const courseDetails = await pool.query(
             'SELECT course_name, course_instructor FROM courses WHERE course_id=$1'
             , [req.body.course_id]
