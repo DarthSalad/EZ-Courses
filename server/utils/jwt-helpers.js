@@ -7,4 +7,8 @@ function jwtTokens({ user_id, user_name, user_email }) {
   return ({ accessToken, refreshToken });
 }
 
-export {jwtTokens};
+function parseJwt (token) {
+  return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+}
+
+export {jwtTokens, parseJwt};

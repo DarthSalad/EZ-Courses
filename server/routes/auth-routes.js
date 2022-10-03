@@ -2,7 +2,8 @@ import express from 'express';
 import jwt from 'jsonwebtoken';
 import pool from '../db.js';
 import bcrypt from 'bcrypt';
-import { jwtTokens } from '../utils/jwt-helpers.js';
+import { jwtTokens, parseJwt } from '../utils/jwt-helpers.js';
+import { authenticateToken } from '../middleware/authorization.js';
 
 const router = express.Router();
 
@@ -45,6 +46,15 @@ router.delete('/refresh_token', (req, res) => {
   try {
     res.clearCookie('refresh_token');
     return res.status(200).json({message:'Refresh token deleted.'});
+  } catch (error) {
+    res.status(401).json({error: error.message});
+  }
+});
+
+router.get('/', authenticateToken, async (req, res) => {
+  try {
+    const token = req.cookies.refresh_token;
+    res.status(200).json(parseJwt(token))
   } catch (error) {
     res.status(401).json({error: error.message});
   }
