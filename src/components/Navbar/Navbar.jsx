@@ -18,7 +18,7 @@ import {
   IconMoonStars,
   IconCircle,
 } from "@tabler/icons";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useStyles } from "./Navbar.styles";
 import { useContext } from "react";
 import { AuthContext } from "../../api/auth.api";
@@ -29,10 +29,10 @@ const links = [
     link: "/profile",
     label: "Profile",
   },
-  {
-    link: "/contact",
-    label: "Contact Us",
-  },
+  // {
+  //   link: "/contact",
+  //   label: "Contact Us",
+  // },
 ];
 
 const colors = [
@@ -53,7 +53,9 @@ export default function Navbar() {
   const { classes } = useStyles();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
-  const navigate = useNavigate();
+  const navigate = (link) => {
+    window.location.href=link;
+  };
 
   const dark = colorScheme === "dark";
 

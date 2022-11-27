@@ -37,7 +37,16 @@ router.delete('/', async (req,res)=>{
   } catch (error) {
     res.status(500).json({error: error.message});
   }
-})
+});
 
+router.post('/courses', authenticateToken, async (req, res) => {
+  try {
+    const courses = await pool.query('SELECT courses FROM users WHERE user_id = $1'
+    , [req.body.user_id]);
+    res.status(200).json(courses.rows[0]);
+  } catch (err) {
+    res.status(400).send({error: err.message});
+  }
+});
 
 export default router;

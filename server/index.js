@@ -28,4 +28,4 @@ app.use('/api/courses', coursesRouter);
 
 app.listen(PORT, ()=> {
   console.log(`Server is listening on port:${PORT}`);
-})
+});

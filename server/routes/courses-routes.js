@@ -23,8 +23,8 @@ router.post('/',authenticateToken, async (req, res) => {
         );
         if (course.rows.length !== 0) return res.status(403).json({error:"Course already exists."});
         await pool.query(
-            'INSERT INTO courses (course_name,course_price,course_instructor) VALUES ($1,$2,$3) RETURNING *'
-            , [req.body.course_name, req.body.course_price, req.body.course_instructor]
+            'INSERT INTO courses (course_name,course_price,course_instructor,course_link) VALUES ($1,$2,$3,$4) RETURNING *'
+            , [req.body.course_name, req.body.course_price, req.body.course_instructor, req.body.course_link]
         );
         res.status(200).send({message: "Course added successfully"});
     } catch (error) {
@@ -60,5 +60,17 @@ router.put('/add_course', authenticateToken, async (req, res) => {
         res.status(500).json({error: error.message});
     }
 });
+
+router.post('/course_details', async (req, res) => {
+    try {
+        const courseDetails = await pool.query(
+            'SELECT course_id,course_name,course_instructor,course_link FROM courses WHERE course_id=$1'
+            , [req.body.course_id]
+        );
+        res.status(200).send({course: courseDetails.rows[0]});
+    } catch (err) {
+        res.status(400).send({error: err});
+    }
+})
 
 export default router;
