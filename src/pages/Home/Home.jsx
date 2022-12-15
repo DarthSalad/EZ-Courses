@@ -38,9 +38,9 @@ const Home = () => {
           console.log(e);
         });
     }
-
+    if(!token)  window.location.href="/register";
     auth && fetchCourses();
-  }, [auth, courses]);
+  }, [auth, courses, token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,7 +71,7 @@ const Home = () => {
 
   return (
     <>
-      {auth ? (
+      {token ? (
         <div style={{ margin: 0 }}>
           <Navbar />
           <div
@@ -146,7 +146,7 @@ const Home = () => {
           </div>
         </div>
       ) : (
-        (window.location.href = "/login")
+        (window.location.href = "/register")
       )}
     </>
   );

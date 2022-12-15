@@ -21,7 +21,8 @@ CREATE TABLE courses(
   course_name TEXT NOT NULL,
   course_price INT NOT NULL,
   enrolled_members INT DEFAULT 0,
-  course_instrcutor TEXT NOT NULL
+  course_instrcutor TEXT NOT NULL,
+  course_link TEXT NOT NULL
 );
 
 --\dt
