@@ -1,6 +1,7 @@
 # Video Course Platform
 
 ## About the project
+EZ-Courses is an online learning and teaching marketplace. It allows instructors to build online courses on their preferred topics. Its learning experience arranges coursework into a series of modules and lessons that includes videos in playlist format.
 
 ## Tools and Technologies used
 - React.js
