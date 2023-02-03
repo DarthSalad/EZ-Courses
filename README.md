@@ -45,3 +45,8 @@ courses
 - ``cd`` to the server directory and start the local server by running ``npm run dev``
 - Navigate to ``http://localhost:3000/register`` for registering if not automatically redirected
 - After registering and loggin in, navigate to ``http://localhost:3000`` if not automatically redirected
+
+## For Further Details
+[click here](./EZ%20Courses%20Report.pdf) for the detailed **Report**
+[click here](./EZ-Courses.pdf) for the **Presentation**
+
