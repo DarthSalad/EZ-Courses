@@ -47,6 +47,6 @@ courses
 - After registering and loggin in, navigate to ``http://localhost:3000`` if not automatically redirected
 
 ## For Further Details
-[click here](./EZ%20Courses%20Report.pdf) for the detailed **Report**
+[click here](./EZ%20Courses%20Report.pdf) for the detailed **Report**<br>
 [click here](./EZ-Courses.pdf) for the **Presentation**
 
